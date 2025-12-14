@@ -1,8 +1,8 @@
 # app.py
 
 from flask import Flask, render_template, request
-# Import the function from your renamed script (AiTool.py)
-from AiTool import get_ai_response
+# Import the function from your renamed script (query.py)
+from query import get_ai_response
 
 app = Flask(__name__)
 
@@ -17,13 +17,13 @@ def index():
 @app.route('/ask', methods=['POST'])
 def ask_ashour():
     # 1. Get the question the user typed
-    # The name 'user_question' must match the name="..." in your HTML input
-    user_input = request.form['user_question']
+    # The name 'q' must match the name="..." in your HTML input
+    user_input = request.form['q']
 
     print(f"--- Received Question: {user_input} ---")
 
     # 2. Call your AI Script and pass the input to it
-    # This runs the function you just modified in AiTool.py
+    # This runs the function you just modified in query.py
     ai_answer = get_ai_response(user_input)
 
     # 3. Display the result
